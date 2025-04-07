@@ -1,4 +1,8 @@
-# 🤖 Modular Chainlit Chatbot
+# ChainLLM
+
+By Eduardo J. Barrios [https://edujbarrios.com](https://edujbarrios.com)
+
+----
 
 A fully-configurable chatbot built with [Chainlit](https://www.chainlit.io/) that supports multiple model providers:
 
@@ -9,19 +13,7 @@ A fully-configurable chatbot built with [Chainlit](https://www.chainlit.io/) tha
 
 ---
 
-## 📦 Setup
-
-1. Clone and install dependencies:
-
-```bash
-git clone https://github.com/your-user/chainlit-chatbot.git
-cd chainlit-chatbot
-pip install -r requirements.txt
-```
-
----
-
-## ⚙️ Configuration
+## ⚙Configuration
 
 All settings are in `config.py`:
 
@@ -37,7 +29,7 @@ MODEL_CONFIG = {
 
 ---
 
-## 🦙 Using Ollama
+##  Using Ollama
 
 1. Install [Ollama](https://ollama.com/):
 
@@ -62,7 +54,7 @@ No API key is needed. Ollama runs locally via HTTP.
 
 ---
 
-## 🚀 Run the Bot
+##  Run the Bot
 
 ```bash
 chainlit run main.py
@@ -71,16 +63,3 @@ chainlit run main.py
 Then open your browser at `http://localhost:8000`.
 
 ---
-
-## 🧠 Roadmap Ideas
-
-- [ ] Add support for llama.cpp / GGUF
-- [ ] Use `.env` or YAML for config
-- [ ] Save chat history
-- [ ] Custom UI
-
----
-
-## 💬 Questions?
-
-Feel free to reach out or contribute!
