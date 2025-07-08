@@ -2,59 +2,57 @@
 
 By Eduardo J. Barrios [https://edujbarrios.com](https://edujbarrios.com)
 
-----
+---
 
 A fully-configurable chatbot built with [Chainlit](https://www.chainlit.io/) that supports multiple model providers:
 
-- ✅ OpenAI (`gpt-3.5-turbo`, etc.)
-- ✅ Hugging Face Inference API
-- ✅ Hugging Face Local (via Transformers)
-- ✅ Ollama (local models like `llama2`, `mistral`, `gemma`, etc.)
-
+- OpenAI (`gpt-3.5-turbo`, etc.)
+- Hugging Face Inference API
+- Hugging Face Local (via Transformers)
+- Ollama (local models like `llama2`, `mistral`, `gemma`, etc.)
+---
+All of them is now managed by Manifest (centralized backend and multi-provider orchestration)
 ---
 
-## ⚙Configuration
+## ⚙ Configuration [MIGRATED TO MANIFEST]
 
-All settings are in `config.py`:
+All settings are in `manifest.yml`:
+```YML
+client:
+  # Choose the backend provider you want to route through Manifest.
+  # Supported types include: openai, huggingface, cohere, local, http
+  client_type: openai
+  # Use an environment variable to store sensitive keys
+  connection: ${OPENAI_API_KEY}  # Replace this for other clients:
+  # connection: ${HF_API_KEY}    # if client_type is huggingface
+  # connection: http://localhost:11434  # if using Ollama/local
 
-```python
-MODEL_CONFIG = {
-    "provider": "ollama",  # openai, huggingface_api, huggingface_local, ollama
-    "model_name": "llama2",
-    "temperature": 0.7,
-    "max_tokens": 1000,
-    "stream": False
-}
+# ---- MODEL SETTINGS ----
+model:
+  provider: openai  # Options: openai, huggingface, cohere, local, etc.
+  model_name: gpt-3.5-turbo  # Change depending on provider
+
+  # Optional tuning parameters:
+  temperature: 0.7
+  max_tokens: 1000
+  stream: true
 ```
-
 ---
 
-##  Using Ollama
+##  Using Manifest
 
-1. Install [Ollama](https://ollama.com/):
+1. Install the Manifest server:
 
 ```bash
-curl -fsSL https://ollama.com/install.sh | sh
+pip install manifest-ml[server]
+manifest server start
 ```
 
-2. Download a model (e.g. `llama2`):
-
-```bash
-ollama run llama2
-```
-
-3. Set in `config.py`:
-
-```python
-"provider": "ollama",
-"model_name": "llama2"
-```
-
-No API key is needed. Ollama runs locally via HTTP.
+You can configure multiple LLM backends in `manifest.yml`.
 
 ---
 
-##  Run the Bot
+## ▶ Run the Bot
 
 ```bash
 chainlit run main.py

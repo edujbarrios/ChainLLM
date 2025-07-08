@@ -1,20 +1,14 @@
 # config.py
 
 MODEL_CONFIG = {
-    "provider": "ollama",  # openai, huggingface_api, huggingface_local, ollama
-    "model_name": "llama2",  # e.g., gpt-3.5-turbo, mistralai/Mistral-7B-Instruct, llama2
-    "temperature": 0.7,
-    "max_tokens": 1000,
-    "stream": False,
-
-    # Optional API credentials
-    "api_key": "",           # For OpenAI
-    "hf_token": "",          # For Hugging Face API
-    "local_model_path": ""   # For local Transformers, if needed
+    "provider": "manifest",  # Only "manifest" is supported in this setup
+    "manifest_client": "http",  # Use "http" for external server, or "local"
+    "manifest_connection": "http://localhost:5000",  # Manifest server URL
+    "manifest_cache": False  # Set to True if you want caching (SQLite, Redis, etc.)
 }
 
 APP_SETTINGS = {
-    "title": "Modular Chainlit Chatbot",
-    "description": "Supports OpenAI, Hugging Face (API/local), and Ollama.",
+    "title": "ChainLLM Chatbot",
+    "description": "Test several LLMs at one site",
     "debug": True
 }

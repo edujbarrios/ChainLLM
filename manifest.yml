@@ -1,0 +1,59 @@
+# ========================
+# Manifest Configuration
+# ========================
+
+# ---- CACHE SETTINGS ----
+cache:
+  cache_type: no_cache  # Options: no_cache, sqlite, redis, memory
+  # path: ./manifest_cache.sqlite  # Required if using sqlite
+
+# ---- CLIENT SETTINGS ----
+client:
+  # Choose the backend provider you want to route through Manifest.
+  # Supported types include: openai, huggingface, cohere, local, http
+  client_type: openai
+  # Use an environment variable to store sensitive keys
+  connection: ${OPENAI_API_KEY}  # Replace this for other clients:
+  # connection: ${HF_API_KEY}    # if client_type is huggingface
+  # connection: http://localhost:11434  # if using Ollama/local
+
+# ---- MODEL SETTINGS ----
+model:
+  provider: openai  # Options: openai, huggingface, cohere, local, etc.
+  model_name: gpt-3.5-turbo  # Change depending on provider
+
+  # Optional tuning parameters:
+  temperature: 0.7
+  max_tokens: 1000
+  stream: true
+
+# ========================
+# Example configurations
+# ========================
+
+# --- For Hugging Face Inference API ---
+# client:
+#   client_type: huggingface
+#   connection: ${HF_API_KEY}
+# model:
+#   provider: huggingface
+#   model_name: mistralai/Mistral-7B-Instruct-v0.1
+
+# --- For Cohere ---
+# client:
+#   client_type: cohere
+#   connection: ${COHERE_API_KEY}
+# model:
+#   provider: cohere
+#   model_name: command-nightly
+
+# --- For Local models (e.g., Ollama) ---
+# client:
+#   client_type: local
+#   connection: http://localhost:11434
+# model:
+#   provider: local
+#   model_name: llama2
+
+# You can configure multiple manifest.yml files and switch between them using:
+#   manifest server start -c path/to/your_manifest.yml
