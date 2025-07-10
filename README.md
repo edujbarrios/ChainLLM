@@ -63,4 +63,6 @@ Then open your browser at `http://localhost:8000`.
 
 ---
 
-ToDo: adding individual users with manifest orchestration
+## ToDo:
+- adding individual users with manifest orchestration
+- adding personalized chainlit UI
