@@ -11,8 +11,9 @@ A fully-configurable chatbot built with [Chainlit](https://www.chainlit.io/) tha
 - Hugging Face Local (via Transformers)
 - Ollama (local models like `llama2`, `mistral`, `gemma`, etc.)
 ---
-All of them is now managed by Manifest (centralized backend and multi-provider orchestration)
----
+
+All of them are now managed by Manifest (centralized backend and multi-provider orchestration)
+
 
 ## ⚙ Configuration [MIGRATED TO MANIFEST]
 
@@ -61,3 +62,5 @@ chainlit run main.py
 Then open your browser at `http://localhost:8000`.
 
 ---
+
+ToDo: adding individual users with manifest orchestration
